@@ -10,7 +10,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class DepartmentService {
-    private final EmployeeService employeeService = new EmployeeService();
+    private final EmployeeService employeeService;
+
+    public DepartmentService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     public Employee findMinSalaryByDepartment(int departmentNumber) {
         return employeeService.getAll().stream()
